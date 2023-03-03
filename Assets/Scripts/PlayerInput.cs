@@ -1,11 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 40f;
-    [SerializeField] private float health = 100f;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int currentHealth = 100;
     [SerializeField] private float jumpSpeed = 10f;
     [SerializeField] private Animator animator = null;
+
+    public HealthBar healthBar;
+
 
     public Rigidbody2D rigidbody = null;
     private Vector3 m_Velocity = Vector3.zero;
@@ -13,9 +18,11 @@ public class PlayerInput : MonoBehaviour
     private bool isFacingRight = true;
     Vector2 movement;
 
-    private void Awake()
+    private void Start()
     {
+        currentHealth = maxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
+        healthBar.setMaxHealth(maxHealth);
     }
 
     private void Update()
@@ -38,7 +45,6 @@ public class PlayerInput : MonoBehaviour
         }
         float move = movementX * Time.deltaTime;
         Vector3 targetVelocity = new Vector2(move * 10f, rigidbody.velocity.y);
-        // And then smoothing it out and applying it to the character
         rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity, ref m_Velocity, .05f);
 
         animator.SetFloat("Speed", targetVelocity.sqrMagnitude);
@@ -57,8 +63,24 @@ public class PlayerInput : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Player Hit");
-            health = health - 10;
+            Enemy temp = collision.gameObject.GetComponent<Enemy>();
+            TakeDamage(temp.dmgDealt);
+            
+        }
+    }
+
+    void TakeDamage(int damage) 
+    { 
+        currentHealth -= damage;
+        healthBar.setHealth(currentHealth);
+        if (currentHealth > 0)
+        {
+            animator.SetTrigger("Hit");
+        }
+        else if (currentHealth == 0) 
+        {
+            animator.SetTrigger("Die");
+            Invoke("endGame", 1);
         }
     }
     private void Flip()
@@ -69,4 +91,7 @@ public class PlayerInput : MonoBehaviour
         transform.localScale = theScale;
     }
 
+    public void endGame() {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
