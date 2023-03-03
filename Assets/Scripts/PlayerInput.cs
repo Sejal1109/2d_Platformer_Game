@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float movementSpeed = 40f;
     [SerializeField] private float jumpSpeed = 10f;
-    //[SerializeField] private Animator animator = null;
+    [SerializeField] private Animator animator = null;
 
     public Rigidbody2D rigidbody = null;
+    private Vector3 m_Velocity = Vector3.zero;
     public bool isGrounded = false;
     private bool isFacingRight = true;
     Vector2 movement;
@@ -27,17 +28,29 @@ public class PlayerInput : MonoBehaviour
 
         //animator.SetFloat("Horizontal", movement.x);
         //animator.SetFloat("Vertical", movement.y);
-        //animator.SetFloat("Speed", movement.sqrMagnitude);
 
         
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !Input.GetButtonDown("Fire1"))
         {
             rigidbody.AddForce(new Vector3(0.0f, jumpSpeed, 0.0f));
+            animator.SetTrigger("Jumping");
 
         }
-        Vector3 move = new Vector3(movementX * Time.deltaTime, 0.0f, 0.0f);
-        transform.Translate(move);
+        else if (Input.GetButtonDown("Jump") && Input.GetButtonDown("Fire1")) {
+            rigidbody.AddForce(new Vector3(0.0f, jumpSpeed, 0.0f));
+            animator.SetTrigger("Attacking");
+        }
+        else if (Input.GetButtonDown("Fire1"))
+        {
+            animator.SetTrigger("Attacking");
+        }
+        float move = movementX * Time.deltaTime;
+        Vector3 targetVelocity = new Vector2(move * 10f, rigidbody.velocity.y);
+        // And then smoothing it out and applying it to the character
+        rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity, ref m_Velocity, .05f);
+
+        animator.SetFloat("Speed", targetVelocity.sqrMagnitude);
         if (movementX > 0 && !isFacingRight)
         {
             Flip();
