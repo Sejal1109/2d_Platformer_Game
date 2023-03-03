@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 40f;
+    [SerializeField] private float health = 100f;
     [SerializeField] private float jumpSpeed = 10f;
     [SerializeField] private Animator animator = null;
 
@@ -19,17 +20,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        float movementX = Input.GetAxis("Horizontal") * movementSpeed;
-
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //  animator.SetTrigger("IsAttacking");
-        //}
-
-        //animator.SetFloat("Horizontal", movement.x);
-        //animator.SetFloat("Vertical", movement.y);
-
-        
+        float movementX = Input.GetAxis("Horizontal") * movementSpeed;        
 
         if (Input.GetButtonDown("Jump") && !Input.GetButtonDown("Fire1"))
         {
@@ -62,6 +53,14 @@ public class PlayerInput : MonoBehaviour
 
     }
 
+    void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Player Hit");
+            health = health - 10;
+        }
+    }
     private void Flip()
     {
         isFacingRight = !isFacingRight;
