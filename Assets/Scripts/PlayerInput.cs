@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth = 100;
     [SerializeField] private float jumpSpeed = 10f;
+    [SerializeField] private int numPotion = 0;
     [SerializeField] private Animator animator = null;
 
     public HealthBar healthBar;
@@ -63,6 +64,12 @@ public class PlayerInput : MonoBehaviour
         {
             Debug.Log("Hit Water");
             TakeDamage(maxHealth);
+        }
+        if (collision.gameObject.CompareTag("potion"))
+        {
+            Debug.Log("Aquired Potion");
+            numPotion += 1;
+            collision.gameObject.SetActive(false);
         }
     }
 
