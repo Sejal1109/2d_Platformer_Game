@@ -14013,7 +14013,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260812025}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -14025,7 +14025,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!66 &260812031
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -16699,7 +16699,7 @@ MonoBehaviour:
   animator: {fileID: 308120799}
   attackPoint: {fileID: 504271155}
   attackDamage: 12
-  attackRange: 0.5
+  attackRange: 0.4
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -16785,7 +16785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1032784924}
   dmgDealt: 15
-  maxHealth: 50
+  maxHealth: 35
   currentHealth: 0
 --- !u!114 &1521660489
 MonoBehaviour:
