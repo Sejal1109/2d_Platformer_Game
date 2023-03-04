@@ -61,6 +61,7 @@ public class PlayerInput : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Water"))
         {
+            Debug.Log("Hit Water");
             TakeDamage(maxHealth);
         }
     }
@@ -73,7 +74,7 @@ public class PlayerInput : MonoBehaviour
         {
             animator.SetTrigger("Hit");
         }
-        else if (currentHealth == 0) 
+        else if (currentHealth <= 0) 
         {
             animator.SetTrigger("Die");
             Invoke("endGame", 1);
