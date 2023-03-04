@@ -67,6 +67,10 @@ public class PlayerInput : MonoBehaviour
             TakeDamage(temp.dmgDealt);
             
         }
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            TakeDamage(maxHealth);
+        }
     }
 
     void TakeDamage(int damage) 
