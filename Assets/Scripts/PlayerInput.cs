@@ -35,14 +35,6 @@ public class PlayerInput : MonoBehaviour
             animator.SetTrigger("Jumping");
 
         }
-        else if (Input.GetButtonDown("Jump") && Input.GetButtonDown("Fire1")) {
-            rigidbody.AddForce(new Vector3(0.0f, jumpSpeed, 0.0f));
-            animator.SetTrigger("Attacking");
-        }
-        else if (Input.GetButtonDown("Fire1"))
-        {
-            animator.SetTrigger("Attacking");
-        }
         float move = movementX * Time.deltaTime;
         Vector3 targetVelocity = new Vector2(move * 10f, rigidbody.velocity.y);
         rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity, ref m_Velocity, .05f);
