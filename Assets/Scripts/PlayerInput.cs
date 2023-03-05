@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private int numPotion = 0;
     [SerializeField] private Animator animator = null;
 
+
+    public Text text;
     public HealthBar healthBar;
 
 
@@ -24,6 +28,9 @@ public class PlayerInput : MonoBehaviour
         currentHealth = maxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
         healthBar.setMaxHealth(maxHealth);
+        text = GameObject.Find("PotionText").GetComponent<Text>();
+        text.text = "it works";
+        
     }
 
     private void Update()
@@ -50,6 +57,9 @@ public class PlayerInput : MonoBehaviour
             Flip();
         }
 
+        Debug.Log(text.text);
+        Debug.Log(numPotion);
+        text.text = numPotion.ToString();
     }
 
     void OnTriggerEnter2D(Collider2D collision) 
