@@ -28,7 +28,7 @@ public class PlayerInput : MonoBehaviour
         currentHealth = maxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
         healthBar.setMaxHealth(maxHealth);
-        text = GameObject.Find("PotionText").GetComponent<Text>();
+        text = GameObject.Find("Potion?").GetComponent<Text>();    // Domnt working for some reason 
         text.text = "it works";
         
     }
