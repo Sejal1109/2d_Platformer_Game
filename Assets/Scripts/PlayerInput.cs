@@ -57,8 +57,8 @@ public class PlayerInput : MonoBehaviour
             Flip();
         }
 
-        Debug.Log(text.text);
-        Debug.Log(numPotion);
+        //Debug.Log(text.text);
+        //Debug.Log(numPotion);
         text.text = numPotion.ToString();
     }
 
@@ -81,6 +81,14 @@ public class PlayerInput : MonoBehaviour
             numPotion += 1;
             collision.gameObject.SetActive(false);
         }
+        if (collision.gameObject.CompareTag("HPotion"))
+        {
+            Debug.Log("Aquired Health Potion");
+            currentHealth += 10;
+            healthBar.setHealth(currentHealth);
+            collision.gameObject.SetActive(false);
+        }
+
     }
 
     void TakeDamage(int damage) 
