@@ -18,7 +18,7 @@ public class PlayerInput : MonoBehaviour
     public Text text;
     public Text healthText;
     public Text damageText;
-   // public Text potionsText;
+    // public Text potionsText;
 
     public HealthBar healthBar;
     public GameObject GameOverScreen;
@@ -37,10 +37,10 @@ public class PlayerInput : MonoBehaviour
         currentHealth = maxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
         healthBar.setMaxHealth(maxHealth);
-        text = GameObject.Find("Potion?").GetComponent<Text>();
+        text = GameObject.Find("Potion").GetComponent<Text>();
         healthText = GameObject.Find("health").GetComponent<Text>();
         damageText = GameObject.Find("damage").GetComponent<Text>();
-       // text = GameObject.Find("Potion?").GetComponent<Text>();
+        // text = GameObject.Find("Potion?").GetComponent<Text>();
         GameOverScreen = GameObject.Find("GameOverScreen");
         GameOverScreen.SetActive(false);
         levelUpScreen = GameObject.Find("LevelUpScreen");
@@ -50,7 +50,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        float movementX = Input.GetAxis("Horizontal") * movementSpeed;        
+        float movementX = Input.GetAxis("Horizontal") * movementSpeed;
 
         if (Input.GetButtonDown("Jump") && !Input.GetButtonDown("Fire1"))
         {
@@ -72,19 +72,19 @@ public class PlayerInput : MonoBehaviour
             Flip();
         }
 
-      
+
         text.text = numPotion.ToString();
         healthText.text = maxHealth.ToString();
         damageText.text = damage.ToString();
     }
 
-    void OnTriggerEnter2D(Collider2D collision) 
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy temp = collision.gameObject.GetComponent<Enemy>();
             TakeDamage(temp.dmgDealt);
-            
+
         }
         if (collision.gameObject.CompareTag("Water"))
         {
@@ -100,9 +100,12 @@ public class PlayerInput : MonoBehaviour
         if (collision.gameObject.CompareTag("HPotion"))
         {
             Debug.Log("Aquired Health Potion");
-            currentHealth += 10;
-            healthBar.setHealth(currentHealth);
-            collision.gameObject.SetActive(false);
+            if (currentHealth != maxHealth) {
+                currentHealth += 10;
+                healthBar.setHealth(currentHealth);
+                collision.gameObject.SetActive(false);
+            }
+          
         }
         if (collision.gameObject.CompareTag("Key"))
         {
@@ -124,10 +127,10 @@ public class PlayerInput : MonoBehaviour
     {
         if (Key == 1)
         {
-          //  endGame();  //wonder what this line does?
+            //  endGame();  //wonder what this line does?
             animator.SetTrigger("Chest");
             Debug.Log("You won!");
-            
+
 
         }
         else
@@ -135,15 +138,15 @@ public class PlayerInput : MonoBehaviour
             Debug.Log("Go Back and get the key");
         }
     }
-    void TakeDamage(int damage) 
-    { 
+    void TakeDamage(int damage)
+    {
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
         if (currentHealth > 0)
         {
             animator.SetTrigger("Hit");
         }
-        else if (currentHealth <= 0) 
+        else if (currentHealth <= 0)
         {
             animator.SetTrigger("Die");
             GameOverScreen.SetActive(true);
@@ -159,14 +162,15 @@ public class PlayerInput : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    public void endGame() {
+    public void endGame()
+    {
         SceneManager.LoadScene("MainMenu");
     }
     public void LevelUp()
     {
         Debug.Log("got hereeeeee");
         levelUpScreen.SetActive(true);
-        
+
 
     }
     public void healthUp()
