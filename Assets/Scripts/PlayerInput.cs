@@ -11,14 +11,19 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float jumpSpeed = 10f;
     [SerializeField] private int numPotion = 0;
     [SerializeField] private int Key = 0;
+    [SerializeField] private int damage = 10;
     [SerializeField] private Animator animator = null;
 
 
     public Text text;
+    public Text healthText;
+    public Text damageText;
+   // public Text potionsText;
+
     public HealthBar healthBar;
     public GameObject GameOverScreen;
+    public GameObject levelUpScreen;
     public GameObject player;
-
 
     public Rigidbody2D rigidbody = null;
     private Vector3 m_Velocity = Vector3.zero;
@@ -32,10 +37,14 @@ public class PlayerInput : MonoBehaviour
         currentHealth = maxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
         healthBar.setMaxHealth(maxHealth);
-        text = GameObject.Find("Potion?").GetComponent<Text>();    // Domnt working for some reason 
-        text.text = "it works";
+        text = GameObject.Find("Potion?").GetComponent<Text>();
+        healthText = GameObject.Find("health").GetComponent<Text>();
+        damageText = GameObject.Find("damage").GetComponent<Text>();
+       // text = GameObject.Find("Potion?").GetComponent<Text>();
         GameOverScreen = GameObject.Find("GameOverScreen");
         GameOverScreen.SetActive(false);
+        levelUpScreen = GameObject.Find("LevelUpScreen");
+        levelUpScreen.SetActive(false);
 
     }
 
@@ -63,9 +72,10 @@ public class PlayerInput : MonoBehaviour
             Flip();
         }
 
-        //Debug.Log(text.text);
-        //Debug.Log(numPotion);
+      
         text.text = numPotion.ToString();
+        healthText.text = maxHealth.ToString();
+        damageText.text = damage.ToString();
     }
 
     void OnTriggerEnter2D(Collider2D collision) 
@@ -103,18 +113,22 @@ public class PlayerInput : MonoBehaviour
         if (collision.gameObject.CompareTag("chest"))
         {
             chest();
-           
-           
-            
+            if (Key == 1)
+            {
+                LevelUp(); //I put this here because i want the chest animation to play before the level up screen
+
+            }
         }
     }
     void chest()
     {
         if (Key == 1)
         {
-            endGame();  //wonder what this line does?
+          //  endGame();  //wonder what this line does?
             animator.SetTrigger("Chest");
             Debug.Log("You won!");
+            
+
         }
         else
         {
@@ -147,5 +161,40 @@ public class PlayerInput : MonoBehaviour
 
     public void endGame() {
         SceneManager.LoadScene("MainMenu");
+    }
+    public void LevelUp()
+    {
+        Debug.Log("got hereeeeee");
+        levelUpScreen.SetActive(true);
+        
+
+    }
+    public void healthUp()
+    {
+        if (numPotion > 3)
+        {
+            numPotion -= 3;
+            maxHealth += 10;
+            //   healthUp();
+        }
+
+    }
+    public void damageUp()
+    {
+        if (numPotion > 2)
+        {
+            numPotion -= 2;
+            damage += 10;
+            //  damageUp();
+
+
+        }
+
+    }
+
+    public void nextLevel()
+    {
+        Debug.Log("this would display the next level");
+        endGame();
     }
 }
