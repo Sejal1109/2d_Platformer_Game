@@ -10,11 +10,14 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private int currentHealth = 100;
     [SerializeField] private float jumpSpeed = 10f;
     [SerializeField] private int numPotion = 0;
+    [SerializeField] private int Key = 0;
     [SerializeField] private Animator animator = null;
 
 
     public Text text;
     public HealthBar healthBar;
+    public GameObject GameOverScreen;
+    public GameObject player;
 
 
     public Rigidbody2D rigidbody = null;
@@ -25,12 +28,15 @@ public class PlayerInput : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.Find("Player");
         currentHealth = maxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
         healthBar.setMaxHealth(maxHealth);
         text = GameObject.Find("Potion?").GetComponent<Text>();    // Domnt working for some reason 
         text.text = "it works";
-        
+        GameOverScreen = GameObject.Find("GameOverScreen");
+        GameOverScreen.SetActive(false);
+
     }
 
     private void Update()
@@ -88,9 +94,33 @@ public class PlayerInput : MonoBehaviour
             healthBar.setHealth(currentHealth);
             collision.gameObject.SetActive(false);
         }
-
+        if (collision.gameObject.CompareTag("Key"))
+        {
+            Debug.Log("Aquired Key");
+            Key += 1;
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("chest"))
+        {
+            chest();
+           
+           
+            
+        }
     }
-
+    void chest()
+    {
+        if (Key == 1)
+        {
+            endGame();  //wonder what this line does?
+            animator.SetTrigger("Chest");
+            Debug.Log("You won!");
+        }
+        else
+        {
+            Debug.Log("Go Back and get the key");
+        }
+    }
     void TakeDamage(int damage) 
     { 
         currentHealth -= damage;
@@ -102,7 +132,9 @@ public class PlayerInput : MonoBehaviour
         else if (currentHealth <= 0) 
         {
             animator.SetTrigger("Die");
-            Invoke("endGame", 1);
+            GameOverScreen.SetActive(true);
+            player.GetComponent<PlayerInput>().enabled = false;
+            //Invoke("endGame", 1);
         }
     }
     private void Flip()

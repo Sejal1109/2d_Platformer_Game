@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Water
   - potion
+  - HPotion
+  - Key
+  - chest
   layers:
   - Default
   - TransparentFX
