@@ -32,9 +32,9 @@ public class Enemy : MonoBehaviour
     void Die() {
 
         Debug.Log("Enemy Died!");
-        anim.SetBool("Die", true);
+        anim.SetTrigger("Die");
+        GetComponent<miscMovement>().enabled = false;
         Invoke("DestroyObject", 1f);
-        
     }
 
     void DestroyObject() 

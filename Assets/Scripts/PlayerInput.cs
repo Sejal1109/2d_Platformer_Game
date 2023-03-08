@@ -149,11 +149,10 @@ public class PlayerInput : MonoBehaviour
         else if (currentHealth <= 0)
         {
             animator.SetTrigger("Die");
-            GameOverScreen.SetActive(true);
-            player.GetComponent<PlayerInput>().enabled = false;
-            //Invoke("endGame", 1);
+            Invoke("endGame", 1);
         }
     }
+   
     private void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -164,7 +163,8 @@ public class PlayerInput : MonoBehaviour
 
     public void endGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        player.gameObject.SetActive(false);
+        GameOverScreen.SetActive(true);
     }
     public void LevelUp()
     {
