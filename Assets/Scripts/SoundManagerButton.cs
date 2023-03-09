@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class SoundManager : MonoBehaviour
+public class SoundManagerButton : MonoBehaviour
 {
-    [SerializeField] Slider volumeSlider;
+    
     [SerializeField] Image soundOnIcon;
     [SerializeField] Image soundOffIcon;
     private bool muted = false;
@@ -14,18 +14,8 @@ public class SoundManager : MonoBehaviour
    // public GameObject off;
     void Start()
     {
-      //  off = GameObject.Find("SoundOffIcon");
-      //  off.SetActive(false);
-
-        if (!PlayerPrefs.HasKey("musicVolume"))
-        {
-            PlayerPrefs.SetFloat("musicVolume", 1);
-            load();
-        }
-        else
-        {
-            load();
-        }
+        //  off = GameObject.Find("SoundOffIcon");
+        //  off.SetActive(false);
 
         if (!PlayerPrefs.HasKey("muted"))
         {
@@ -36,10 +26,14 @@ public class SoundManager : MonoBehaviour
         {
             loadButton();
         }
-       // soundOffIcon.enabled = false;
-        
-        AudioListener.pause = muted;
+
         UpdateButtonIcon();
+        AudioListener.pause = muted;
+        Debug.Log("GotHERE");
+
+
+      
+       
     }
 
     public void UpdateButtonIcon()
@@ -57,22 +51,7 @@ public class SoundManager : MonoBehaviour
         }
 
     }
-    public void ChangeVolume()
-    {
-        AudioListener.volume= volumeSlider.value;
-        Save();
-    }
-
-    private void load()
-    {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        
-    }
-    private void Save()
-    {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
-
-    }
+   
 
     private void SaveButton()
     {

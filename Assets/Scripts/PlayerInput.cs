@@ -196,9 +196,4 @@ public class PlayerInput : MonoBehaviour
 
     }
 
-    public void nextLevel()
-    {
-        Debug.Log("this would display the next level");
-        endGame();
-    }
 }
