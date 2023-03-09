@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    /*
-    public PlayerInput  player = null;
+
+    [SerializeField] private PlayerInput player = null;
 
     private string savePath;
     private void Start()
     {
         savePath = Application.persistentDataPath + "/saveData/";
         Debug.Log("Saving to path: " + savePath);
-        this.player = new PlayerInput();
+        //player = new PlayerInput();
+        Debug.Log(player.name+"helllo");
     }
     [ContextMenu("Save Player")]
-    void SaveArmour()
+    public void SaveArmour()
     {
-       // JSONLoaderSaver.SaveArmourAsJSON(savePath, "player.json", this.player);
-        BinaryLoaderSaver.SaveArmourAsBinary(savePath, "armour.bin", this.armour);
+        JSONLoaderSaver.SaveArmourAsJSON(savePath, "player.json", this.player);
+      //  BinaryLoaderSaver.SaveArmourAsBinary(savePath, "armour.bin", this.armour);
     }
     [ContextMenu("Load Armour")]
-    void LoadArmour()
+    public void LoadArmour()
     {
-        //this.player = JSONLoaderSaver.LoadArmourFromJSON(savePath, "player.json");
-        this.armour = BinaryLoaderSaver.LoadArmourFromBinary(savePath, "armour.bin");
+        this.player = JSONLoaderSaver.LoadArmourFromJSON(savePath, "player.json");
+        //this.armour = BinaryLoaderSaver.LoadArmourFromBinary(savePath, "armour.bin");
     }
-    */
+    
 }
