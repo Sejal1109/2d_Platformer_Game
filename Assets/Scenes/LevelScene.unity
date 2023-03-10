@@ -15890,6 +15890,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2149418064622956085, guid: 46506ed5b1a0f99488772533312ab0b7, type: 3}
   m_PrefabInstance: {fileID: 1711883879}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &401258415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401258416}
+  m_Layer: 3
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &401258416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401258415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.548, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1334383067}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &417097518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2149418064622956085, guid: 46506ed5b1a0f99488772533312ab0b7, type: 3}
@@ -21463,8 +21494,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005221367, y: -0.0052195787}
-  m_Size: {x: 0.6774616, y: 1.219219}
+  m_Offset: {x: 0.005221367, y: 0.025363564}
+  m_Size: {x: 0.6774616, y: 1.1580527}
   m_Direction: 0
 --- !u!50 &1334383065
 Rigidbody2D:
@@ -21501,6 +21532,7 @@ Transform:
   m_Children:
   - {fileID: 308120797}
   - {fileID: 504271155}
+  - {fileID: 401258416}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21524,6 +21556,12 @@ MonoBehaviour:
   Key: 0
   damage: 10
   animator: {fileID: 308120799}
+  isGrounded: 0
+  canDoubleJump: 0
+  groundCheck: {fileID: 401258416}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
   text: {fileID: 1599014826}
   text2: {fileID: 0}
   healthText: {fileID: 0}
@@ -21533,7 +21571,6 @@ MonoBehaviour:
   levelUpScreen: {fileID: 0}
   player: {fileID: 0}
   rigidbody: {fileID: 0}
-  isGrounded: 0
 --- !u!114 &1334383069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24328,7 +24365,7 @@ GameObject:
   - component: {fileID: 1659587369}
   - component: {fileID: 1659587367}
   - component: {fileID: 1659587370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackGroundTiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

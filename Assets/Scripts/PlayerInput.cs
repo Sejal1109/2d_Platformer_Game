@@ -13,6 +13,10 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private int Key = 0;
     [SerializeField] private int damage = 10;
     [SerializeField] private Animator animator = null;
+    [SerializeField] bool isGrounded = false;
+    [SerializeField] bool canDoubleJump = false;
+    [SerializeField] public Transform groundCheck;
+    [SerializeField] public LayerMask groundLayer;
 
     public Text text;
     public Text text2;
@@ -26,7 +30,6 @@ public class PlayerInput : MonoBehaviour
 
     public Rigidbody2D rigidbody = null;
     private Vector3 m_Velocity = Vector3.zero;
-    public bool isGrounded = false;
     private bool isFacingRight = true;
     Vector2 movement;
 
@@ -52,10 +55,22 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && !Input.GetButtonDown("Fire1"))
         {
-            rigidbody.AddForce(new Vector3(0.0f, jumpSpeed, 0.0f));
-            animator.SetTrigger("Jumping");
-
+            if (isGrounded)
+            {
+                rigidbody.AddForce(new Vector3(0.0f, jumpSpeed, 0.0f));
+                canDoubleJump = true;
+                animator.SetTrigger("Jumping");
+            }
+            else if (canDoubleJump)
+            {
+                canDoubleJump = false;
+                jumpSpeed = jumpSpeed / 1.5f;
+                rigidbody.AddForce(new Vector3(0.0f, jumpSpeed, 0.0f));
+                jumpSpeed = jumpSpeed * 1.5f;
+                animator.SetTrigger("Jumping");
+            }
         }
+
         float move = movementX * Time.deltaTime;
         Vector3 targetVelocity = new Vector2(move * 10f, rigidbody.velocity.y);
         rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity, ref m_Velocity, .05f);
@@ -70,6 +85,7 @@ public class PlayerInput : MonoBehaviour
             Flip();
         }
 
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         text.text = numPotion.ToString();
         text2.text = numPotion.ToString();
         healthText.text = maxHealth.ToString();
