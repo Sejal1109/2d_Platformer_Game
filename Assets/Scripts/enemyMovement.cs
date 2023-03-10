@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class miscMovement : MonoBehaviour
+public class enemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     private float min;

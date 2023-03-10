@@ -89,13 +89,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2537a539d3bb9604f9aba8125bec0105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 40
-  maxHealth: 100000
+  movementSpeed: 20
+  maxHealth: 100
   currentHealth: 100
   jumpSpeed: 100
   numPotion: 0
   Key: 0
-  damage: 10
+  damage: 12
   animator: {fileID: 3689335671163583809}
   isGrounded: 0
   canDoubleJump: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   animator: {fileID: 3689335671163583809}
   attackPoint: {fileID: 3689335671093387437}
   attackDamage: 12
-  attackRange: 0.4
+  attackRange: 0.2
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64

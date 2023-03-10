@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
 
         Debug.Log("Enemy Died!");
         anim.SetTrigger("Die");
-        GetComponent<miscMovement>().enabled = false;
+        GetComponent<enemyMovement>().enabled = false;
         Invoke("DestroyObject", 1f);
     }
 
