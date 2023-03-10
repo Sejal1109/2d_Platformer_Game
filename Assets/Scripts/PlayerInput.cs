@@ -16,6 +16,7 @@ public class PlayerInput : MonoBehaviour
 
 
     public Text text;
+    public Text text2;
     public Text healthText;
     public Text damageText;
     // public Text potionsText;
@@ -38,6 +39,7 @@ public class PlayerInput : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         healthBar.setMaxHealth(maxHealth);
         text = GameObject.Find("Potion").GetComponent<Text>();
+        text2 = GameObject.Find("lvlPotion").GetComponent<Text>();
         healthText = GameObject.Find("health").GetComponent<Text>();
         damageText = GameObject.Find("damage").GetComponent<Text>();
         // text = GameObject.Find("Potion?").GetComponent<Text>();
@@ -45,7 +47,6 @@ public class PlayerInput : MonoBehaviour
         GameOverScreen.SetActive(false);
         levelUpScreen = GameObject.Find("LevelUpUI");
         levelUpScreen.SetActive(false);
-
     }
 
     private void Update()
@@ -74,6 +75,7 @@ public class PlayerInput : MonoBehaviour
 
 
         text.text = numPotion.ToString();
+        text2.text = numPotion.ToString();
         healthText.text = maxHealth.ToString();
         damageText.text = damage.ToString();
     }
