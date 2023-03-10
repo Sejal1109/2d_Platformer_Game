@@ -207,6 +207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1072542226427275167}
-  dmgDealt: 50
+  dmgDealt: 10
   maxHealth: 50
   currentHealth: 0
