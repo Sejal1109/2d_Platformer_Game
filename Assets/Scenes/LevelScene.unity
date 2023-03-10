@@ -21549,9 +21549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 40
-  maxHealth: 100
+  maxHealth: 100000
   currentHealth: 100
-  jumpSpeed: 200
+  jumpSpeed: 100
   numPotion: 0
   Key: 0
   damage: 10
