@@ -6,12 +6,12 @@ using TMPro;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 40f;
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth = 100;
     [SerializeField] private float jumpSpeed = 10f;
-    [SerializeField] private int numPotion = 0;
+    [SerializeField] private int numPotion;
     [SerializeField] private int Key = 0;
-    [SerializeField] private int damage = 10;
+    [SerializeField] private int damage;
     [SerializeField] private Animator animator = null;
     [SerializeField] bool isGrounded = false;
     [SerializeField] bool canDoubleJump = false;
@@ -36,8 +36,21 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
-        currentHealth = maxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
+        if (MainMenu.gameState == "New") 
+        {
+            maxHealth = SaveManager.instance.stats.maxHealth;
+            numPotion = SaveManager.instance.stats.score;
+            damage = SaveManager.instance.stats.attackDmg;
+        }
+        if (MainMenu.gameState == "Load")
+        {
+            SaveManager.instance.LoadPlayer();
+            maxHealth = SaveManager.instance.stats.maxHealth;
+            numPotion = SaveManager.instance.stats.score;
+            damage = SaveManager.instance.stats.attackDmg;
+        }
+        currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
         text = GameObject.Find("Potion").GetComponent<Text>();
         text2 = GameObject.Find("lvlPotion").GetComponent<Text>();
@@ -107,8 +120,8 @@ public class PlayerInput : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("potion"))
         {
-            //Debug.Log("Aquired Potion");
             numPotion += 10;
+            SaveManager.instance.stats.score = numPotion;
             collision.gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("HPotion"))
@@ -179,7 +192,6 @@ public class PlayerInput : MonoBehaviour
     }
     public void LevelUp()
     {
-        //Debug.Log("got hereeeeee");
         levelUpScreen.SetActive(true);
     }
     public void healthUp()
@@ -188,6 +200,8 @@ public class PlayerInput : MonoBehaviour
         {
             numPotion -= 10;
             maxHealth += 5;
+            SaveManager.instance.stats.maxHealth = maxHealth;
+            SaveManager.instance.stats.score = numPotion;
         }
 
     }
@@ -197,6 +211,8 @@ public class PlayerInput : MonoBehaviour
         {
             numPotion -= 10;
             damage += 10;
+            SaveManager.instance.stats.attackDmg = damage;
+            SaveManager.instance.stats.score = numPotion;
         }
     }
 }

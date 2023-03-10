@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-
-    [SerializeField] private PlayerInput player = null;
+    public PlayerStats stats = null;
+    public static SaveManager instance;
 
     private string savePath;
+
+    private void Awake()
+    {
+        instance= this;
+        savePath = Application.persistentDataPath + "/saveData/";
+    }
     private void Start()
     {
-        savePath = Application.persistentDataPath + "/saveData/";
-        Debug.Log("Saving to path: " + savePath);
-        //player = new PlayerInput();
-        Debug.Log(player.name+"helllo");
+        if (MainMenu.gameState == "New")
+        {
+            Debug.Log("Saving to path: " + savePath);
+            this.stats = new PlayerStats();
+        }
     }
-    [ContextMenu("Save Player")]
-    public void SaveArmour()
+
+    public void SavePlayer()
     {
-        JSONLoaderSaver.SaveArmourAsJSON(savePath, "player.json", this.player);
-      //  BinaryLoaderSaver.SaveArmourAsBinary(savePath, "armour.bin", this.armour);
+        JSONLoaderSaver.SavePlayerAsJSON(savePath, "player.json", this.stats);
     }
-    [ContextMenu("Load Armour")]
-    public void LoadArmour()
+    public void LoadPlayer()
     {
-        this.player = JSONLoaderSaver.LoadArmourFromJSON(savePath, "player.json");
-        //this.armour = BinaryLoaderSaver.LoadArmourFromBinary(savePath, "armour.bin");
+        this.stats = JSONLoaderSaver.LoadPlayerFromJSON(savePath,
+        "player.json");
     }
-    
+
 }

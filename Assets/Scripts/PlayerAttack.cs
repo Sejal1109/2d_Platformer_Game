@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public PlayerStats stats;
     public Animator animator;
     public Transform attackPoint;
 
-    public int attackDamage = 12;
+    public int attackDamage;
     public float attackRange = 0.5f;
 
     public LayerMask enemyLayer;
 
     void Start() 
-    { 
-    
+    {
+        if (MainMenu.gameState == "New")
+        { 
+            attackDamage = SaveManager.instance.stats.attackDmg;
+        }
+        if (MainMenu.gameState == "Load")
+        {
+            attackDamage = SaveManager.instance.stats.attackDmg;
+        }
     }
     void Update()
     {
@@ -33,12 +41,5 @@ public class PlayerAttack : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
-    }
-
-    void onDrawGizmosSelected() 
-    {
-        if (attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
