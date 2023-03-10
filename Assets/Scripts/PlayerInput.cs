@@ -41,9 +41,9 @@ public class PlayerInput : MonoBehaviour
         healthText = GameObject.Find("health").GetComponent<Text>();
         damageText = GameObject.Find("damage").GetComponent<Text>();
         // text = GameObject.Find("Potion?").GetComponent<Text>();
-        GameOverScreen = GameObject.Find("GameOverScreen");
+        GameOverScreen = GameObject.Find("GameOverUI");
         GameOverScreen.SetActive(false);
-        levelUpScreen = GameObject.Find("LevelUpScreen");
+        levelUpScreen = GameObject.Find("LevelUpUI");
         levelUpScreen.SetActive(false);
 
     }

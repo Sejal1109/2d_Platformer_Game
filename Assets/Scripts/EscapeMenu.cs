@@ -12,7 +12,7 @@ public class EscapeMenu : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        escScreen = GameObject.Find("EscMenu");
+        escScreen = GameObject.Find("EscMenuUI");
         escScreen.SetActive(false);
 
     }
