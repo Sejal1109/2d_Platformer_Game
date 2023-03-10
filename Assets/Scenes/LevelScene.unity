@@ -22229,7 +22229,6 @@ GameObject:
   - component: {fileID: 1504046662}
   - component: {fileID: 1504046661}
   - component: {fileID: 1504046660}
-  - component: {fileID: 1504046659}
   m_Layer: 0
   m_Name: Chest_0
   m_TagString: chest
@@ -22237,26 +22236,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1504046659
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504046658}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cd6467a3a2aede64fa2f9c52d2e39e2a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!61 &1504046660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123618,7 +123597,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 54822e3255757434b8224791fe4683bd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a4c24bd34726c84439fbbf8e71acf36f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.385
   m_Pitch: 1
@@ -124068,6 +124047,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1950735417}
+    - target: {fileID: 3689335669759762498, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
+      propertyPath: movementSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3689335669759762501, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -124111,6 +124094,10 @@ PrefabInstance:
     - target: {fileID: 3689335669759762501, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689335669759762503, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
+      propertyPath: m_Mass
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3689335669759762505, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
       propertyPath: m_Name
