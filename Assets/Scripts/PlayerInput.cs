@@ -22,10 +22,12 @@ public class PlayerInput : MonoBehaviour
     public Text text2;
     public TMP_Text healthText;
     public TMP_Text damageText;
+    public TMP_InputField playerName;
 
     public HealthBar healthBar;
     public GameObject GameOverScreen;
     public GameObject levelUpScreen;
+    public GameObject enterNameScreen;
     public GameObject player;
 
     public Rigidbody2D rigidbody = null;
@@ -36,12 +38,14 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
+        enterNameScreen = GameObject.Find("enterNameUI");
         rigidbody = GetComponent<Rigidbody2D>();
-        if (MainMenu.gameState == "New") 
+        if (MainMenu.gameState == "New")
         {
             maxHealth = SaveManager.instance.stats.maxHealth;
             numPotion = SaveManager.instance.stats.score;
             damage = SaveManager.instance.stats.attackDmg;
+            enterNameScreen.SetActive(true);
         }
         if (MainMenu.gameState == "Load")
         {
@@ -49,6 +53,7 @@ public class PlayerInput : MonoBehaviour
             maxHealth = SaveManager.instance.stats.maxHealth;
             numPotion = SaveManager.instance.stats.score;
             damage = SaveManager.instance.stats.attackDmg;
+            enterNameScreen.SetActive(false);
         }
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
@@ -56,6 +61,7 @@ public class PlayerInput : MonoBehaviour
         text2 = GameObject.Find("lvlPotion").GetComponent<Text>();
         healthText = GameObject.Find("health").GetComponent<TMP_Text>();
         damageText = GameObject.Find("damage").GetComponent<TMP_Text>();
+        playerName = GameObject.Find("playerInput").GetComponent<TMP_InputField>();
         GameOverScreen = GameObject.Find("GameOverUI");
         GameOverScreen.SetActive(false);
         levelUpScreen = GameObject.Find("LevelUpUI");
@@ -127,12 +133,13 @@ public class PlayerInput : MonoBehaviour
         if (collision.gameObject.CompareTag("HPotion"))
         {
             //Debug.Log("Aquired Health Potion");
-            if (currentHealth != maxHealth) {
+            if (currentHealth != maxHealth)
+            {
                 currentHealth += 5;
                 healthBar.setHealth(currentHealth);
                 collision.gameObject.SetActive(false);
             }
-          
+
         }
         if (collision.gameObject.CompareTag("Key"))
         {
@@ -176,7 +183,7 @@ public class PlayerInput : MonoBehaviour
             Invoke("endGame", 1);
         }
     }
-   
+
     private void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -214,5 +221,12 @@ public class PlayerInput : MonoBehaviour
             SaveManager.instance.stats.attackDmg = damage;
             SaveManager.instance.stats.score = numPotion;
         }
+    }
+
+    public void saveName()
+    {
+        string pName = playerName.text;
+        SaveManager.instance.stats.name = pName.ToString();
+        enterNameScreen.SetActive(false);
     }
 }
