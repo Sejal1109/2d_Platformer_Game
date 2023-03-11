@@ -125153,11 +125153,11 @@ PrefabInstance:
       objectReference: {fileID: 1950735417}
     - target: {fileID: 3689335669759762498, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
       propertyPath: jumpSpeed
-      value: 700
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3689335669759762498, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
       propertyPath: movementSpeed
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3689335669759762501, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
       propertyPath: m_RootOrder
@@ -125209,7 +125209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689335669759762503, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3689335669759762505, guid: e0f5b98d945280845b6aba0969b04154, type: 3}
       propertyPath: m_Name

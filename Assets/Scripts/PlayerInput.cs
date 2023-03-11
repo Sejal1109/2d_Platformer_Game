@@ -34,6 +34,7 @@ public class PlayerInput : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     private bool isFacingRight = true;
     Vector2 movement;
+    float movementX;
 
     private void Start()
     {
@@ -70,7 +71,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        float movementX = Input.GetAxis("Horizontal") * movementSpeed;
+        movementX = Input.GetAxis("Horizontal") * movementSpeed;
 
         if (Input.GetButtonDown("Jump") && !Input.GetButtonDown("Fire1"))
         {
@@ -90,11 +91,7 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        float move = movementX * Time.deltaTime;
-        Vector3 targetVelocity = new Vector2(move * 10f, rigidbody.velocity.y);
-        rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity, ref m_Velocity, .05f);
-
-        animator.SetFloat("Speed", targetVelocity.sqrMagnitude);
+        
         if (movementX > 0 && !isFacingRight)
         {
             Flip();
@@ -109,6 +106,13 @@ public class PlayerInput : MonoBehaviour
         text2.text = numPotion.ToString();
         healthText.text = maxHealth.ToString();
         damageText.text = damage.ToString();
+    }
+    void FixedUpdate() 
+    {
+        float move = movementX * Time.deltaTime;
+        Vector3 targetVelocity = new Vector2(move * 10f, rigidbody.velocity.y);
+        rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity, ref m_Velocity, .05f);
+        animator.SetFloat("Speed", targetVelocity.sqrMagnitude);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

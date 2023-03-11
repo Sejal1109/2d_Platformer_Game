@@ -352,7 +352,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Alexie Linardos\nSejal Shingal\n\n The Flavare at theflavare.itch.io\n\nmaaot.itch.io\n\nRomance
-    Fatal Serif Version 3.00 by \r\nwww.juancascofonts.blogspot.com\n\n\nMenus\nLevel\n\n\ngabrycorti.itch.io\nluizmelo.itch.io\n\n9e0.itch.io"
+    Fatal Serif Version 3.00 by \r\nwww.juancascofonts.blogspot.com\n\n\nWith a Stamp
+    by Twin Musicom at twinmusicom.org\nStopping by the inn by Twin Musicom at twinmusicom.org\n\n\ngabrycorti.itch.io\nluizmelo.itch.io\n\n9e0.itch.io"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e1c9f48615931c46b50de37df9b620c, type: 2}
   m_sharedMaterial: {fileID: -627484901669077835, guid: 5e1c9f48615931c46b50de37df9b620c, type: 2}
@@ -415,7 +416,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.00000003010002, y: 0, z: -3.3873444, w: -0.51141346}
+  m_margin: {x: -0.00000003010002, y: 0, z: -29.494583, w: -0.51141346}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -784,7 +785,9 @@ MonoBehaviour:
 
     Menus
 
+
     Level
+
 
 
     Enemies:
