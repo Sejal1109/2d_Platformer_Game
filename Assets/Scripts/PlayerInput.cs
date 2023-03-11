@@ -21,6 +21,7 @@ public class PlayerInput : MonoBehaviour
     public Text text;
     public Text text2;
     public TMP_Text healthText;
+    public TMP_Text currentPlayer;
     public TMP_Text damageText;
     public TMP_InputField playerName;
 
@@ -62,6 +63,7 @@ public class PlayerInput : MonoBehaviour
         text2 = GameObject.Find("lvlPotion").GetComponent<Text>();
         healthText = GameObject.Find("health").GetComponent<TMP_Text>();
         damageText = GameObject.Find("damage").GetComponent<TMP_Text>();
+        currentPlayer = GameObject.Find("currPlayer").GetComponent<TMP_Text>();
         playerName = GameObject.Find("playerInput").GetComponent<TMP_InputField>();
         GameOverScreen = GameObject.Find("GameOverUI");
         GameOverScreen.SetActive(false);
@@ -105,6 +107,7 @@ public class PlayerInput : MonoBehaviour
         text.text = numPotion.ToString();
         text2.text = numPotion.ToString();
         healthText.text = maxHealth.ToString();
+        currentPlayer.text = "Hello " + SaveManager.instance.stats.name + "!";
         damageText.text = damage.ToString();
     }
     void FixedUpdate() 
