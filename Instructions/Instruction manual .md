@@ -2,7 +2,7 @@
 ## By Sejal and Alexie
 
 
-**Creating the File:**
+### Creating the File:
 
 **Step 1:** open your unity hub and click the new project button in the top right corner. 
 
@@ -23,7 +23,7 @@
 **Step 4:** Once your project is created, download the Assets folder available with our repository and replace it with your local Assets to load the pre-built game and also get local access to all our assets.
 
 
-**Understanding Unity User Interface:**
+### Understanding Unity User Interface:
 
 Now that you have opened the project lets just define and explain some of the windows. 
 
@@ -78,25 +78,26 @@ Lastly, to run your game you click the play button, while its running you can pa
 
 ![](Aspose.Words.78309b26-cb34-4338-914a-20719c8d3737.011.png)
 
-Prefabs, we have some prefabs for you. These are objects already made with animations, movement and storage collection so all you have to do is drag and drop them to your desired location in the scene.  Some prefabs are enemies, player, Healing and mana potions and many more. Next the Scripts File contains many c++ scripts that you can apply to objects to give them traits such as the Player input which allows an object to move and collect things, sound manager that controls the sound in the game or save manager that helps with loading and saving the game. There are also some sprites there if you want to make a character from scratch. 
+### Prefabs 
+We have some prefabs for you. These are objects already made with animations, movement and storage collection so all you have to do is drag and drop them to your desired location in the scene.  Some prefabs are enemies, player, Healing and mana potions and many more. Next the Scripts File contains many c++ scripts that you can apply to objects to give them traits such as the Player input which allows an object to move and collect things, sound manager that controls the sound in the game or save manager that helps with loading and saving the game. There are also some sprites there if you want to make a character from scratch. 
 
 
 
-**First Getting start:**
+### First Getting start:
 
 ![](Aspose.Words.78309b26-cb34-4338-914a-20719c8d3737.012.png)![](Aspose.Words.78309b26-cb34-4338-914a-20719c8d3737.013.png)
 
 Before we start, let's open a few windows that we will be needing like the animation, animator and tile pallet menu. Click window, 2D, Tile Pallet and a window should pop up on your screen you can place that anywhere but the recommended position is the right menu with the inspector. Just click on the name of the tile pallet that just popped up and drag it beside the inspector. Now we are going to do the same for the animator click window, animation animator. Finally click window, animation, then animation again and drag this one to beside the console window near the bottom. 
 
-**Scene building:**
+### Scene building:
 
 Now that we have everything set up we can start building the game. You are going to right click on the hierarchy and create an empty object then drag and drop your background images from your files into the empty game object and recycle them to the preferred size. There are some premade tile palettes that you can use or you can load in your own tile map sheet and make a tile palette using that. You can look at our pre-built scene available under “Assets/Scenes” called LevelScene and use it as an inspiration to create your own level! 
 
 Note: It is mandatory that you use our pre-built Main Menu and Credits Scene if you want to use our Assets. This will also make it easier for you to build a complete game as the Main Menu already has the required assets attached to it to successfully run the game. Once you complete your “Level” scene, all you need to do is navigate to it correctly from the main menu (Further explained in the Changing Scenes Section).
 
-**Make your own tile map instructions:**
+### Make your own tile map instructions:
 
-**Using Tilemap to Make Game:**
+### Using Tilemap to Make Game:
 
 ![](Aspose.Words.78309b26-cb34-4338-914a-20719c8d3737.014.png)
 
@@ -111,7 +112,7 @@ You can find the tile palettes in the TileSprites > TileMap> GroundTiles.prefab 
 
 
 
-**Mechanics:**
+### Mechanics:
 
 ![](Aspose.Words.78309b26-cb34-4338-914a-20719c8d3737.015.png)
 
@@ -126,8 +127,7 @@ Once your level is created but before adding a player, colliders must be added t
 
 
 
-
-**Adding Objects:**
+### Adding Objects:
 
 **Character Creation:**
 
@@ -152,7 +152,7 @@ There are blue potions that count as mana and a red potion that restores health 
 
 
 
-**Camera Follow:**
+### Camera Follow:
 
 If you made your level bigger than the camera size the camera will have to follow your player. In the Assets > Scripts folder there is a file called “CameraFollow” select the MainCamera and drag the Camera Follow script into the inspector tab. You will need to drag the player from the hierarchy menu and add the player to the Target field 
 
@@ -160,9 +160,9 @@ If you made your level bigger than the camera size the camera will have to follo
 
 **Note:** this will not be necessary if your level is the size of the camera view
 
-**Sound Management:**
+### Sound Management:
 
-`	`**Background Sound:**
+**Background Sound:**
 
 To create background sound for your game, go to the music folder and drag in the prefab level music into the hierarchy. You can drag your music into the music folder and then from the music folder into the audio source, audio clip section. You can control the sound level with the volume, sound is between 0-1.
 
@@ -172,7 +172,7 @@ To create background sound for your game, go to the music folder and drag in the
 
 All the above menus are prefabs that you can use in the game. The first one is a utility menu that's mapped to the escape button to open and close. The second menu is the death screen button that is mapped to appear when the player's health goes to zero. The last menu is a pop up that first appears after the start menu to allow players to name their character. 
 
-**Saving and loading states:**
+### Saving and loading states:
 
 Saving and Loading is being done through the SaveManager and JSONLoaderSaver scripts under “Assets/Scripts”. Our Save and Load Scripts require the use of our prebuilt player in your game. If you aren’t using our pre-built Player you won't be able to use our Save and Load functionality as is and will have to adjust your own players to make it work with it!
 
@@ -191,7 +191,7 @@ As for the Load Button on the Main Menu, if you are successfully saving the Play
 
 The LoadGame methods works by checking is the LoadPlayer Method is returning anything other than “null” to load the saved values. If nothing is saved locally, LoadPlayer() will always return a null value.
 
-**Changing Scenes:**
+### Changing Scenes:
 
 Changing between differents Scenes can be easily done through the scripts. Since you are required to use our prebuilt Main Menu, the only edit required by you to successfully get to your Level Scene is to be done in the MainMenu Script (“Assets/Scripts/MainMenu”). Once you have created and named your Level Scene, navigate to the MainMenu Script and replace line 12 as follows:  SceneManager.LoadScene("Name of your level Scene");
 
