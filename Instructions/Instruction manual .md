@@ -1,5 +1,5 @@
-*Project One: Adventures of A Little Blue Witch
-By Sejal and Alexie*
+# Project One: Adventures of A Little Blue Witch
+## By Sejal and Alexie
 
 
 **Creating the File:**
