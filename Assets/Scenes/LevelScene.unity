@@ -15657,6 +15657,7 @@ GameObject:
   - component: {fileID: 345176303}
   - component: {fileID: 345176302}
   - component: {fileID: 345176301}
+  - component: {fileID: 345176305}
   m_Layer: 5
   m_Name: EscMenuUI
   m_TagString: Untagged
@@ -15751,6 +15752,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &345176305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345176300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8029fef6d643cb643a1f4ffbae2f69ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 0}
 --- !u!1 &346673588
 GameObject:
   m_ObjectHideFlags: 0
@@ -20910,11 +20924,11 @@ RectTransform:
   m_Father: {fileID: 362083013}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 219.62}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1125396891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21200,7 +21214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173953064}
   - component: {fileID: 1173953066}
-  - component: {fileID: 1173953065}
+  - component: {fileID: 1173953067}
   m_Layer: 5
   m_Name: Volume Slider
   m_TagString: Untagged
@@ -21231,20 +21245,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -41.8}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1173953065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173953063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e158404c8ade6a46a13b3dba1e9d561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundOnIcon: {fileID: 0}
-  soundOffIcon: {fileID: 0}
 --- !u!114 &1173953066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21296,8 +21296,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1173953065}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1173953067}
+        m_TargetAssemblyTypeName: SoundManagerSlider, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 1
         m_Arguments:
@@ -21308,6 +21308,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1173953067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173953063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8029fef6d643cb643a1f4ffbae2f69ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1173953066}
 --- !u!1 &1190477011
 GameObject:
   m_ObjectHideFlags: 0
@@ -124839,13 +124852,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a4c24bd34726c84439fbbf8e71acf36f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.385
+  m_Volume: 0.324
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 81
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
