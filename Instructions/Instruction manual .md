@@ -7,6 +7,7 @@
 **Step 1:** open your unity hub and click the new project button in the top right corner. 
 
 ![](Aspose.Words.78309b26-cb34-4338-914a-20719c8d3737.001.png)
+
 **Step 2:** Select the 2D core template and enter a project name in the bottom right corner as well a file location. 
 
 ![](Aspose.Words.78309b26-cb34-4338-914a-20719c8d3737.002.png)
