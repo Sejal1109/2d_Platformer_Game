@@ -27,11 +27,18 @@ public class MainMenu : MonoBehaviour
         }
         
     }
-
     public void Credits()
     {
         Debug.Log("Credits");
         SceneManager.LoadScene("Credits");
+    }
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }
 
